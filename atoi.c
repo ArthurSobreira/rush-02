@@ -6,19 +6,21 @@
 /*   By: msarment <msarment@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:12:38 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/10 15:28:46 by msarment         ###   ########.fr       */
+/*   Updated: 2023/06/10 16:43:08 by msarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #define UNSIGNED_INT_MAX 4294967295
 
-int	fill_number(char *str, unsigned long long int number, unsigned int *nbr);
+int	fill_number(char *str, unsigned long long int number, char *number_str);
+int	len_number(unsigned int value);
 
-int	atoi(char *str, unsigned int *nbr)
+int	atoi(char *str, char *number_str)
 {
 	unsigned long long int	number;
 
+	number = 0;
 	if (*str == '\0')
 		return (1);
 	while (*str != '\0')
@@ -39,13 +41,17 @@ int	atoi(char *str, unsigned int *nbr)
 		if (*str < '0' || *str > '9')
 			return (1);
 	}
-	fill_number(str, number, nbr);
+	fill_number(str, number, number_str);
 	return (0);
 }
 
-int	fill_number(char *str, unsigned long long int number, unsigned int *nbr)
+int	fill_number(char *str, unsigned long long int number, char *number_str)
 {
-	number = 0;
+	char	*init;
+	int		len;
+	int		i;
+
+	init = str;
 	while (*str >= '0' && *str <= '9')
 	{
 		number = (number * 10) + (*str - '0');
@@ -53,15 +59,36 @@ int	fill_number(char *str, unsigned long long int number, unsigned int *nbr)
 			return (1);
 		str++;
 	}
-	*nbr = (unsigned int)number;
+	len = len_number((unsigned int)number);
+	i = 0;
+	while (i < len)
+	{
+		number_str[i] = *init;
+		i++;
+		init++;
+	}
+	number_str[i] = '\0';
+	return (0);
+}
+
+int	len_number(unsigned int value)
+{
+	int	i;
+
+	i = 0;
+	while (value > 10)
+	{
+		i++;
+		value = value / 10;
+	}
+	i++;
+	return (i);
 }
 
 // int	main(void)
 // {
-// 	char				*str;
-// 	unsigned int		number = 0;
+// 	char str_number[11];
 
-// 	str = "    \n \f 23 \f32  ";
-// 	atoi(str, &number);
-// 	printf("%u\n", number);
+// 	atoi("    \n \r   +90237isalkj2892731", str_number);
+// 	printf("%s\n", str_number);
 // }
