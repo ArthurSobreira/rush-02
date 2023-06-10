@@ -5,71 +5,63 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarment <msarment@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 18:23:13 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/10 14:16:50 by msarment         ###   ########.fr       */
+/*   Created: 2023/06/10 15:12:38 by msarment          #+#    #+#             */
+/*   Updated: 2023/06/10 15:28:46 by msarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-	// 48 = '0'
-int	check_number(char *str, int i)
+#define UNSIGNED_INT_MAX 4294967295
+
+int	fill_number(char *str, unsigned long long int number, unsigned int *nbr);
+
+int	atoi(char *str, unsigned int *nbr)
 {
-	while (str[i] != '\0')
+	unsigned long long int	number;
+
+	if (*str == '\0')
+		return (1);
+	while (*str != '\0')
 	{
-		if (str[i] == ' ' || str[i] == '\f' || str[i] == '\n')
-			i++;
-		else if (str[i] == '\r' || str[i] == '\v' || str[i] == '\t')
-			i++;
-		else if (str[i] >= '0' && str[i] <= '9')
-			return (0);
+		if (*str == ' ' || *str == '\f' || *str == '\n' || \
+			*str == '\r' || *str == '\v' || *str == '\t')
+			str++;
+		else if (*str >= '0' && *str <= '9')
+			break ;
+		else if (*str == '+')
+			break ;
 		else
 			return (1);
 	}
-	return (1);
-}
-
-char	*clean_array(char *str, int i)
-{
-	char	*strclean;
-	int		cont;
-
-	cont = 0;
-	while (str[i] < '0' || str[i] > '9')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	if (*str == '+')
 	{
-		strclean[cont] = str[i];
-		cont++;
+		str++;
+		if (*str < '0' || *str > '9')
+			return (1);
 	}
-	strclean[cont] = '\0';
-	return (strclean);
+	fill_number(str, number, nbr);
+	return (0);
 }
 
-// int	atoi(char *str)
-// {
-// 	unsigned int	number;
-// 	int				check;
-// 	int				len;
-// 	int				i;
-
-// 	i = 0;
-// 	check = check_number(str, i);
-// 	if (check == 0)
-// 	{
-// 	}
-// }
-// "    \n    \t\t  \f \r\r     932912sd102909\n"
-
-int	main(void)
+int	fill_number(char *str, unsigned long long int number, unsigned int *nbr)
 {
-	char	*str;
-	// int		check;
-	int		i;
-	char	*str2;
-
-	i = 0;
-	str = "\n \n \n 123321";
-	// check = check_number(str, i);
-	str2 = clean_array(str, i);
-	printf("%s", str2);
+	number = 0;
+	while (*str >= '0' && *str <= '9')
+	{
+		number = (number * 10) + (*str - '0');
+		if (number > UNSIGNED_INT_MAX)
+			return (1);
+		str++;
+	}
+	*nbr = (unsigned int)number;
 }
+
+// int	main(void)
+// {
+// 	char				*str;
+// 	unsigned int		number = 0;
+
+// 	str = "    \n \f 23 \f32  ";
+// 	atoi(str, &number);
+// 	printf("%u\n", number);
+// }
