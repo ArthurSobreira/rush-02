@@ -6,7 +6,7 @@
 /*   By: arsobrei <arsobrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:30:06 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 19:17:06 by arsobrei         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:28:55 by arsobrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,32 +53,37 @@ static int	print_digit(char *dict, char digit, int sub_group_number)
 	return (0);
 }
 
+static int	return_error(int r_val)
+{
+	int	err;
+
+	err = r_val;
+	if (err != 0)
+	{
+		return (err);
+	}
+	return (0);
+}
+
 static int	print_group(char *dict, int n)
 {
 	char	*str;
-	int		err;
 
 	if (n == 0)
 		std_putstr("");
 	else if (n == 1)
 	{
-		err = dict_get_value(dict, "1000", &str);
-		if (err != 0)
-			return (err);
+		return_error(dict_get_value(dict, "1000", &str));
 		std_putstr(str);
 	}
 	else if (n == 2)
 	{
-		err = dict_get_value(dict, "1000000", &str);
-		if (err != 0)
-			return (err);
+		return_error(dict_get_value(dict, "1000000", &str));
 		std_putstr(str);
 	}
 	else if (n == 3)
 	{
-		err = dict_get_value(dict, "1000000000", &str);
-		if (err != 0)
-			return (err);
+		return_error(dict_get_value(dict, "1000000000", &str));
 		std_putstr(str);
 	}
 	else
