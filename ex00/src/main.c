@@ -6,14 +6,13 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 23:44:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/06/11 04:41:44 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/06/11 04:44:56 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/error/error.h"
 #include "../libs/number/number.h"
 #include "../libs/file/file.h"
-#include "../libs/dict/dict.h"
 
 #include <stdio.h>
 int	main(int argc, char **argv)
@@ -33,20 +32,22 @@ int	main(int argc, char **argv)
 			error_print(err);
 			return (0);
 		}
-		printf("the number was parsed and it is %s!\n", number_str);
+		printf("The number was parsed and it is %s!\n", number_str);
 		err = file_read_as_string("./data/numbers.dict", &dict);
 		if (err != 0)
 		{
 			error_print(err);
 			return (0);
 		}
-		printf("the file was read and it is \n%s\n", dict);
-		// err = number_print_in_words(number_str, dict);
-		// if (err != 0)
-		// {
-		// 	error_print(err);
-		// 	return (0);
-		// }
+		printf("The file was read and it is:\n%s\n", dict);
+		err = number_print_in_words(number_str, dict);
+		if (err != 0)
+		{
+			error_print(err);
+			return (0);
+		}
+		printf("The number was printed in words!\n");
+		printf("Don't forget to free every allocated memory.\n");
 	}
 	else if(argc == 3)
 	{
