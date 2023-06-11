@@ -1,18 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   std_realloc_char.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msarment <msarment@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/11 16:30:17 by msarment          #+#    #+#             */
+/*   Updated: 2023/06/11 16:30:39 by msarment         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-int	std_realloc_char(char *old_p, char **new_p, unsigned int old_size, unsigned int new_size)
+int	std_realloc_char(char **p, unsigned int *size)
 {
-	unsigned int i;
+	unsigned int	i;
+	char			*p_aux;
 
-	*new_p = (char *)malloc(new_size * sizeof(char));
-	if (*new_p == 0)
+	p_aux = (char *)malloc(*size * 2 * sizeof(char));
+	if (p_aux == 0)
 		return (3);
 	i = 0;
-	while(i < old_size)
+	while (i < *size)
 	{
-		(*new_p)[i] = old_p[i];
+		p_aux[i] = (*p)[i];
 		i++;
 	}
-	free(old_p);
+	free(*p);
+	*p = p_aux;
+	*size = *size * 2;
 	return (0);
 }
