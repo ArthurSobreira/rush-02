@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:41:06 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 18:00:26 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:44:51 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,16 @@ static int	get_next_value(char **dict, char **value)
 	return (0);
 }
 
+static int	helper(char **value, char *current_key, \
+char *current_value, unsigned int len)
+{
+	*value = (char *)malloc(len * sizeof(char));
+	std_strcpy(*value, current_value);
+	free(current_key);
+	free(current_value);
+	return (0);
+}
+
 int	dict_get_value(char *dict, char *key, char **value)
 {
 	int					err;
@@ -91,10 +101,7 @@ int	dict_get_value(char *dict, char *key, char **value)
 			err = std_strlen(current_value, &len);
 			if (err != 0)
 				return (err);
-			*value = (char *)malloc(len * sizeof(char));
-			std_strcpy(*value, current_value);
-			free(current_key);
-			free(current_value);
+			helper(value, current_key, current_value, len);
 			return (0);
 		}
 		free(current_key);
