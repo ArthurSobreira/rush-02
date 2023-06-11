@@ -67,15 +67,14 @@ void ft_print_number(const char* number, const DictionaryEntry* dictionary, int 
 int main(void) 
 {
     DictionaryEntry dictionary[MAX_DICT_ENTRIES];
-    int dictSize = ft_load_dict
-(dictionary);
+    int dictSize = ft_load_dict(dictionary);
 
     if (dictSize == 0) {
         return 1;
     }
 
     const char* inputNumber = "500";
-    ft_print_number
-(inputNumber, dictionary, dictSize);
+    ft_print_number(inputNumber, dictionary, dictSize);
 
     return (0);
+}
