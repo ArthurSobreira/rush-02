@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   std_strcmp.c                                       :+:      :+:    :+:   */
+/*   std_strlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/11 16:30:47 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 17:42:33 by bhildebr         ###   ########.fr       */
+/*   Created: 2023/06/11 18:00:42 by bhildebr          #+#    #+#             */
+/*   Updated: 2023/06/11 18:00:50 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	std_strcmp(char *s1, char *s2)
+int	std_strlen(char *str, unsigned int *len)
 {
-	while (*s1 == *s2++)
-	{
-		if (*s1++ == '\0')
-		{
-			return (0);
-		}
-	}
-	return ((unsigned char)(*s1) - (unsigned char)*(s2 - 1));
+	*len = 0;
+	while (str[*len])
+		(*len)++;
+	return (0);
 }
