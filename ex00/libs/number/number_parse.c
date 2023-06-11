@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   number_parse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msarment <msarment@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:12:38 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 01:58:17 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:29:51 by msarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,3 @@ int	len_number(unsigned int value)
 	i++;
 	return (i);
 }
-
-// int	main(void)
-// {
-// 	char str_number[11];
-
-// 	atoi("    \n \r   +90237isalkj2892731", str_number);
-// 	printf("%s\n", str_number);
-// }

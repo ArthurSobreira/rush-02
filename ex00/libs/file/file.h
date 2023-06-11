@@ -1,6 +1,18 @@
-#ifndef FILE_H
-#define FILE_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   file.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msarment <msarment@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/11 16:31:56 by msarment          #+#    #+#             */
+/*   Updated: 2023/06/11 16:32:01 by msarment         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int file_read_as_string(char *path, char **str);
+#ifndef FILE_H
+# define FILE_H
+
+int	file_read_as_string(char *path, char **str);
 
 #endif

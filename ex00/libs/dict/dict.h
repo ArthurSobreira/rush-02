@@ -1,6 +1,18 @@
-#ifndef DICT_H
-#define DICT_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dict.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msarment <msarment@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/11 16:32:13 by msarment          #+#    #+#             */
+/*   Updated: 2023/06/11 16:32:17 by msarment         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int dict_get_value(char *dict, char *key, char **value);
+#ifndef DICT_H
+# define DICT_H
+
+int	dict_get_value(char *dict, char *key, char **value);
 
 #endif
