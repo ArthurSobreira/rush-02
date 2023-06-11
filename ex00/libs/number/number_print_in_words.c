@@ -6,14 +6,15 @@
 /*   By: arsobrei <arsobrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:30:06 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 20:13:00 by arsobrei         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:30:28 by arsobrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../dict/dict.h"
 #include "../std/std.h"
+#include <stdio.h>
 
-static int	print_digit(char *dict, char digit, int sub_group_number)
+static int	print_digit(char *dict, char *digit, int sub_group_number)
 {
 	char	*str;
 	char	key[4];
@@ -31,12 +32,17 @@ static int	print_digit(char *dict, char digit, int sub_group_number)
 	else if (sub_group_number == 1 && digit != '0')
 	{
 		key[0] = digit;
-		key[1] = '0';
+		// if (digit == '1' && next_digit != '0')
+		// 	key[1] = next_digit;
+		// else
+		// 	key[1] = '0';
+		key[1] = ;
 		key[2] = '\0';
+		printf("next_digit: %c\n", next_digit);
 		err = dict_get_value(dict, key, &str);
 		if (err != 0)
 			return (err);
-		std_putstr(str);
+		std_putstr(str);	
 	}
 	else if (sub_group_number == 2 && digit != '0')
 	{
@@ -151,7 +157,7 @@ int	number_print_in_words(char *number_str, char *dict)
 		digit = number_str[i];
 		group_number = (number_str_len - i - 1) / 3;
 		sub_group_number = (number_str_len - i - 1) % 3;
-		print_final_numbers(dict, &digit, sub_group_number, group_number);
+		print_final_numbers(dict, &number_str[i], sub_group_number, group_number);
 		i++;
 	}
 	std_putchar('\n');
