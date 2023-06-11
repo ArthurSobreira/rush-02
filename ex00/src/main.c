@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 23:44:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/06/11 18:36:51 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:34:36 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,18 @@ int	main(int argc, char **argv)
 	}
 	else if(argc == 3)
 	{
-		// err = number_parse(argv[2], number_str);
-		// if (err != 0)
-		// {
-		// 	error_print(err);
-		// 	return (0);
-		// }
-		// err = number_print_in_words(number_str, argv[1]);
-		// if (err != 0)
-		// {
-		// 	error_print(err);
-		// 	return (0);
-		// }
+		err = number_parse(argv[2], &number_str);
+		if (err != 0)
+		{
+			error_print(err);
+			return (0);
+		}
+		err = number_print_in_words(number_str, argv[1]);
+		if (err != 0)
+		{
+			error_print(err);
+			return (0);
+		}
 	}
 	else
 	{
