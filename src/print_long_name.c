@@ -3,11 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_long_name.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arsobrei <arsobrei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 18:41:01 by arsobrei          #+#    #+#             */
-/*   Updated: 2023/06/11 12:14:29 by arsobrei         ###   ########.fr       */
-/*                                                                            */
+/*   Updated: 2023/06/11 12:14:29 by arsobrei         ###   ########.fr       */                                                                       */
 /* ************************************************************************** */
 
 #include <stdio.h>
@@ -61,13 +60,12 @@ void ft_convnert_number(int number, const DictionaryEntry* dictionary, int dictS
 void ft_print_number(const char* number, const DictionaryEntry* dictionary, int dictSize) {
     int num = atoi(number);
     char result[1000] = "";
-    ft_convnert_number
-(num, dictionary, dictSize, result);
-
+    ft_convnert_number(num, dictionary, dictSize, result);
     printf("%s\n", result);
 }
 
-int main(void) {
+int main(void) 
+{
     DictionaryEntry dictionary[MAX_DICT_ENTRIES];
     int dictSize = ft_load_dict
 (dictionary);
@@ -80,5 +78,4 @@ int main(void) {
     ft_print_number
 (inputNumber, dictionary, dictSize);
 
-    return 0;
-}
+    return (0);
