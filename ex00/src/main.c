@@ -6,15 +6,15 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 23:44:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/06/11 20:34:36 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:37:33 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "../libs/error/error.h"
 #include "../libs/number/number.h"
 #include "../libs/file/file.h"
 
-#include <stdio.h>
 int	main(int argc, char **argv)
 {
 	int		err;
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 		if (err != 0)
 		{
 			error_print(err);
+			free(number_str);
 			return (0);
 		}
 		// printf("The number was parsed and it is %s!\n", number_str);
@@ -37,6 +38,8 @@ int	main(int argc, char **argv)
 		if (err != 0)
 		{
 			error_print(err);
+			free(number_str);
+			free(dict);
 			return (0);
 		}
 		// printf("The file was read and it is:\n%s\n", dict);
@@ -44,10 +47,11 @@ int	main(int argc, char **argv)
 		if (err != 0)
 		{
 			error_print(err);
+			free(number_str);
+			free(dict);
 			return (0);
 		}
 		// printf("The number was printed in words!\n");
-		printf("Don't forget to free every allocated memory.\n");
 	}
 	else if(argc == 3)
 	{
@@ -55,12 +59,14 @@ int	main(int argc, char **argv)
 		if (err != 0)
 		{
 			error_print(err);
+			free(number_str);
 			return (0);
 		}
 		err = number_print_in_words(number_str, argv[1]);
 		if (err != 0)
 		{
 			error_print(err);
+			free(number_str);
 			return (0);
 		}
 	}
