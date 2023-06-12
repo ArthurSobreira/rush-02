@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   number_print_in_words.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arsobrei <arsobrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:30:06 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 21:43:10 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:51:06 by arsobrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,12 @@ static int	print_subgroup(char *dict, char digit, int n)
 
 static int	print_final_numbers(char *dict, char *digit, int sub_group_number, int group_number)
 {
-	int err;
+	int	err;
 
 	err = print_digit(dict, digit, sub_group_number);
 	if (err != 0)
 		return (err);
-	if(sub_group_number == 2 && *digit != '0')
+	if (sub_group_number == 2 && *digit != '0')
 	{
 		std_putchar(' ');
 		err = print_subgroup(dict, *digit, sub_group_number);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arsobrei <arsobrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 23:44:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/06/11 21:37:33 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:51:17 by arsobrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(int argc, char **argv)
 			free(number_str);
 			return (0);
 		}
-		// printf("The number was parsed and it is %s!\n", number_str);
 		err = file_read_as_string("./data/numbers.dict", &dict);
 		if (err != 0)
 		{
@@ -42,7 +41,6 @@ int	main(int argc, char **argv)
 			free(dict);
 			return (0);
 		}
-		// printf("The file was read and it is:\n%s\n", dict);
 		err = number_print_in_words(number_str, dict);
 		if (err != 0)
 		{
@@ -51,9 +49,8 @@ int	main(int argc, char **argv)
 			free(dict);
 			return (0);
 		}
-		// printf("The number was printed in words!\n");
 	}
-	else if(argc == 3)
+	else if (argc == 3)
 	{
 		err = number_parse(argv[2], &number_str);
 		if (err != 0)
