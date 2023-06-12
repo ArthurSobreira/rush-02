@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msarment <msarment@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:05:24 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 15:05:25 by msarment         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:59:11 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	error_print(int code)
 	}
 	else if (code == 3)
 	{
-		write(1, "Error :: CHANGE ME\n", 19);
+		write(1, "Error\n", 6);
 	}
 	return (0);
 }

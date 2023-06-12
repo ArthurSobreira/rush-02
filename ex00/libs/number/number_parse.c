@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   number_parse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msarment <msarment@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:12:38 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 16:29:51 by msarment         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:04:25 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	len_number(unsigned int value);
 int	number_parse(char *str, char **number_str)
 {
 	unsigned long long int	number;
+	int						err;
 
 	number = 0;
 	if (*str == '\0')
@@ -42,7 +43,9 @@ int	number_parse(char *str, char **number_str)
 		if (*str < '0' || *str > '9')
 			return (1);
 	}
-	fill_number(str, number, number_str);
+	err = fill_number(str, number, number_str);
+	if (err != 0)
+		return (err);
 	return (0);
 }
 
