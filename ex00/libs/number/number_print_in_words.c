@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   number_print_in_words.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arsobrei <arsobrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:30:06 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 20:37:50 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:31:44 by arsobrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	print_digit(char *dict, char *digit, int sub_group_number)
 	char	key[4];
 	int		err;
 
-	if (sub_group_number == 0 && *digit != '0' && *(digit-1) != '1')
+	if ((sub_group_number == 0) && (*digit != '0') && (*(digit - 1) != '1'))
 	{
 		key[0] = *digit;
 		key[1] = '\0';
@@ -114,14 +114,13 @@ static int	print_subgroup(char *dict, char digit, int n)
 }
 
 static int	print_final_numbers(char *dict, char *digit, int sub_group_number, int group_number)
-{
+{	
 	print_digit(dict, digit, sub_group_number);
 	print_subgroup(dict, *digit, sub_group_number);
 	if (sub_group_number == 0)
-	{
+	{	
 		print_group(dict, group_number);
 	}
-	std_putchar('\n');
 	return (0);
 }
 
@@ -153,7 +152,10 @@ int	number_print_in_words(char *number_str, char *dict)
 		group_number = (number_str_len - i - 1) / 3;
 		sub_group_number = (number_str_len - i - 1) % 3;
 		print_final_numbers(dict, &number_str[i], sub_group_number, group_number);
+		if (!(i == number_str_len - 1))
+			std_putchar(' ');
 		i++;
 	}
+	std_putchar('\n');
 	return (0);
 }
