@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   number_print_in_words.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arsobrei <arsobrei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:30:06 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 21:31:44 by arsobrei         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:43:10 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,7 @@ static int	print_group(char *dict, int n)
 	char	*str;
 	int		err;
 
-	if (n == 0)
-		std_putstr("");
-	else if (n == 1)
+	if (n == 1)
 	{
 		err = dict_get_value(dict, "1000", &str);
 		if (err != 0)
@@ -95,31 +93,36 @@ static int	print_subgroup(char *dict, char digit, int n)
 	char	*str;
 	int		err;
 
-	if (n == 0)
-		std_putstr("");
-	else if (n == 1)
-		std_putstr("");
-	else if (n == 2 && digit != '0')
+	if (n == 2 && digit != '0')
 	{
 		err = dict_get_value(dict, "100", &str);
 		if (err != 0)
 			return (err);
 		std_putstr(str);
 	}
-	else
-	{
-		return (2);
-	}
 	return (0);
 }
 
 static int	print_final_numbers(char *dict, char *digit, int sub_group_number, int group_number)
-{	
-	print_digit(dict, digit, sub_group_number);
-	print_subgroup(dict, *digit, sub_group_number);
-	if (sub_group_number == 0)
-	{	
-		print_group(dict, group_number);
+{
+	int err;
+
+	err = print_digit(dict, digit, sub_group_number);
+	if (err != 0)
+		return (err);
+	if(sub_group_number == 2 && *digit != '0')
+	{
+		std_putchar(' ');
+		err = print_subgroup(dict, *digit, sub_group_number);
+		if (err != 0)
+			return (err);
+	}
+	if (sub_group_number == 0 && group_number != 0)
+	{
+		std_putchar(' ');
+		err = print_group(dict, group_number);
+		if (err != 0)
+			return (err);
 	}
 	return (0);
 }
@@ -138,6 +141,7 @@ static int	print_final_numbers(char *dict, char *digit, int sub_group_number, in
 */
 int	number_print_in_words(char *number_str, char *dict)
 {
+	int				err;
 	int				group_number;
 	int				sub_group_number;
 	unsigned int	number_str_len;
@@ -151,7 +155,9 @@ int	number_print_in_words(char *number_str, char *dict)
 	{
 		group_number = (number_str_len - i - 1) / 3;
 		sub_group_number = (number_str_len - i - 1) % 3;
-		print_final_numbers(dict, &number_str[i], sub_group_number, group_number);
+		err = print_final_numbers(dict, &number_str[i], sub_group_number, group_number);
+		if (err != 0)
+			return (err);
 		if (!(i == number_str_len - 1))
 			std_putchar(' ');
 		i++;

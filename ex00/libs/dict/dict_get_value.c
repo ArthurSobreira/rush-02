@@ -6,14 +6,12 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:41:06 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 20:44:51 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:36:16 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "../std/std.h"
-
-#include <stdio.h>
 
 static int	get_next_key(char **dict, char **key)
 {
