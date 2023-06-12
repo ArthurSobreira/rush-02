@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   number_print_in_words.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arsobrei <arsobrei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:30:06 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 21:51:06 by arsobrei         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:57:02 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ static int	print_subgroup(char *dict, char digit, int n)
 	return (0);
 }
 
-static int	print_final_numbers(char *dict, char *digit, int sub_group_number, int group_number)
+static int	print_final_numbers(char *dict, char *digit, \
+int sub_group_number, int group_number)
 {
 	int	err;
 
@@ -155,7 +156,8 @@ int	number_print_in_words(char *number_str, char *dict)
 	{
 		group_number = (number_str_len - i - 1) / 3;
 		sub_group_number = (number_str_len - i - 1) % 3;
-		err = print_final_numbers(dict, &number_str[i], sub_group_number, group_number);
+		err = print_final_numbers(dict, &number_str[i], \
+		sub_group_number, group_number);
 		if (err != 0)
 			return (err);
 		if (!(i == number_str_len - 1))

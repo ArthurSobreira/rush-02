@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:12:38 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 21:04:25 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:56:17 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@
 
 int	fill_number(char *str, unsigned long long int number, char **number_str);
 int	len_number(unsigned int value);
+
+int	helper(char **str)
+{
+	if (**str == '+')
+	{
+		(*str)++;
+		if (**str < '0' || **str > '9')
+			return (1);
+	}
+	return (0);
+}
 
 int	number_parse(char *str, char **number_str)
 {
@@ -37,12 +48,9 @@ int	number_parse(char *str, char **number_str)
 		else
 			return (1);
 	}
-	if (*str == '+')
-	{
-		str++;
-		if (*str < '0' || *str > '9')
-			return (1);
-	}
+	err = helper(&str);
+	if (err != 0)
+		return (err);
 	err = fill_number(str, number, number_str);
 	if (err != 0)
 		return (err);
