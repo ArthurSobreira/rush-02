@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   number_print_in_words.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arsobrei <arsobrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:30:06 by msarment          #+#    #+#             */
-/*   Updated: 2023/06/11 21:57:02 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/06/11 22:06:15 by arsobrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,6 @@ static int	print_group(char *dict, int n)
 		if (err != 0)
 			return (err);
 		std_putstr(str);
-	}
-	else
-	{
-		return (2);
 	}
 	return (0);
 }
